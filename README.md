@@ -48,7 +48,7 @@ bubble_ocr_reader/
 
 PDF scans of completed bubble forms (phone camera or flatbed scanner).
 
-![Sample scan](./sample_scans/sample_scan_preview.png)
+![Sample scan](./sample_scans/sample_scan2.pdf)
 
 ### Answer Key
 
