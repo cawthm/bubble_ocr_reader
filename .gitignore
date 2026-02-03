@@ -31,8 +31,10 @@ auth/
 # Large binary files
 *.pdf
 
-# Keep the template PDF
+# Keep the template PDF and sample scans
 !bubble_template.pdf
+!sample_scans/*.pdf
+!sample_scans/*.png
 
 # Test question bank (may contain proprietary content)
 test_questions/

@@ -17,10 +17,13 @@ cd bubble_test_ocr_reader
 install.packages(c("magick", "tidyverse", "data.table", "yaml", "argparse"))
 ```
 
-On macOS, also install ImageMagick:
-```bash
-brew install imagemagick
-```
+**ImageMagick** (required by the `magick` R package):
+
+| OS | Command |
+|----|---------|
+| macOS | `brew install imagemagick` |
+| Ubuntu/Debian | `sudo apt-get install libmagick++-dev` |
+| Windows | Download installer from [imagemagick.org/script/download.php](https://imagemagick.org/script/download.php) |
 
 ## Directory Structure
 
@@ -43,6 +46,8 @@ bubble_test_ocr_reader/
 ### Scanned Answer Sheets
 
 PDF scans of completed bubble forms (phone camera or flatbed scanner).
+
+<img src="sample_scans/sample_scan_preview.png" alt="Sample scan" width="400">
 
 ### Answer Key
 
