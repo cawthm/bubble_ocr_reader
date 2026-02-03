@@ -1,0 +1,11 @@
+resp_no,wxxy,wxxz,zyzx,yyyy,wxyz,zzyw
+1,a,c,b,d,a,a
+2,b,a,d,c,b,d
+3,c,b,a,b,a,b
+4,d,d,c,a,d,b
+5,e,e,e,e,e,c
+6,a,b,c,d,c,e
+7,b,c,d,a,b,d
+8,c,d,a,b,b,a
+9,d,a,b,c,d,b
+10,e,e,e,e,a,a

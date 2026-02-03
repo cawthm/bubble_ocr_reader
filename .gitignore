@@ -1,4 +1,45 @@
+# R Session Files
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+~$*
+*.tmp
+
+# Input/Output directories (contain student data)
+input/
+output/
+
+# Quiz scans (large PDF files, contain student data)
+quiz scans/
+quiz_scans/
+
+# Student exam data
+student_exams/
+
+# Credentials and sensitive files
+*.json
+credentials/
+auth/
+
+# Large binary files
+*.pdf
+
+# Keep the template PDF
+!bubble_template.pdf
+
+# Test question bank (may contain proprietary content)
+test_questions/
+
+# Roster files (contain student PII)
+*roster*.csv
+*roster*.xlsx
+
+# Grade files
+*grades*.csv

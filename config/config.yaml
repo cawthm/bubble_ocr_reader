@@ -1,0 +1,54 @@
+# Bubble Test OCR Reader Configuration
+
+# Image processing parameters
+image:
+  target_width: 1260
+  target_height: 1530
+  colorspace: "LinearGray"
+  colors: 2
+  median_radius: 14
+  threshold_type: "white"
+  threshold_percent: 40
+
+# Bubble detection parameters
+detection:
+  peak_threshold: 10
+  dedup_radius: 10
+  confidence_min: 40
+  marker_z_threshold: 400
+
+# Template matching
+template:
+  markers:
+    - "MK_NA_1"
+    - "MK_NA_2"
+    - "MK_NA_3"
+    - "MK_NA_4"
+
+# File paths (relative to project root)
+paths:
+  bubble_map: "data/bubble_map.csv"
+  roster: "data/roster.csv"
+  scans_dir: "input/"
+  output_dir: "output/"
+  keys_dir: "keys/"
+
+# Answer keys mapping (quiz name -> key file)
+answer_keys:
+  quiz_1: "keys/quiz_1.csv"
+  quiz_2: "keys/quiz_2.csv"
+  final: "keys/final.csv"
+
+# Output settings
+output:
+  results_prefix: "results"
+  summary_prefix: "summary"
+  audit_prefix: "audit"
+  timestamp_format: "%Y%m%d_%H%M%S"
+
+# Processing options
+processing:
+  parallel: false
+  n_workers: 4
+  verbose: true
+  save_intermediate: false
