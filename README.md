@@ -5,8 +5,8 @@ Automatically grade scanned bubble sheet answer forms. Extracts student IDs, tes
 ## Clone
 
 ```bash
-git clone https://github.com/yourusername/bubble_test_ocr_reader.git
-cd bubble_test_ocr_reader
+git clone https://github.com/cawthm/bubble_ocr_reader.git
+cd bubble_ocr_reader
 ```
 
 ## Dependencies
@@ -28,7 +28,7 @@ install.packages(c("magick", "tidyverse", "data.table", "yaml", "argparse"))
 ## Directory Structure
 
 ```
-bubble_test_ocr_reader/
+bubble_ocr_reader/
 ├── R/                  # Core modules
 ├── scripts/            # CLI entry point
 │   └── grade.R
@@ -37,7 +37,8 @@ bubble_test_ocr_reader/
 ├── data/               # Bubble template coordinates
 │   └── bubble_map.csv
 ├── keys/               # Answer keys
-├── input/              # Place scanned PDFs here
+│   └── sample_versioned_key.csv
+├── sample_scans/       # Example scans for testing
 └── output/             # Graded results appear here
 ```
 
@@ -47,19 +48,19 @@ bubble_test_ocr_reader/
 
 PDF scans of completed bubble forms (phone camera or flatbed scanner).
 
-<img src="sample_scans/sample_scan_preview.png" alt="Sample scan" width="400">
+![Sample scan](./sample_scans/sample_scan_preview.png)
 
 ### Answer Key
 
 CSV with `resp_no` column plus version columns. Versions are 4-character codes from {w,x,y,z}:
 
 ```csv
-resp_no,wxyz,zzyw
-1,a,a
-2,b,d
-3,a,b
-4,d,b
-5,e,c
+resp_no,wxxy,wxxz,zyzx,yyyy,wxyz,zzyw
+1,a,c,b,d,a,a
+2,b,a,d,c,b,d
+3,c,b,a,b,a,b
+4,d,d,c,a,d,b
+5,e,e,e,e,e,c
 ...
 ```
 
@@ -67,11 +68,13 @@ Students mark their test version in the 4-column grid at the top of the form, an
 
 ## Usage
 
+Try it with the included sample scans:
+
 ```bash
 Rscript scripts/grade.R \
-  --scan-dir input/quiz_1 \
-  --quiz quiz_1 \
-  --key keys/quiz_1_key.csv
+  --scan-dir sample_scans \
+  --quiz sample_test \
+  --key keys/sample_versioned_key.csv
 ```
 
 **Options:**
@@ -91,8 +94,8 @@ Results are saved to `output/`:
 **results_\<quiz\>_\<timestamp\>.csv**
 ```csv
 student_id,test_version,quiz,resp_no,ans,metric,file,key,correct
-301245678,wxyz,quiz_1,1,a,133.12,input/scan1.pdf,a,TRUE
-301245678,wxyz,quiz_1,2,b,156.40,input/scan1.pdf,b,TRUE
+301245678,wxyz,sample_test,1,a,133.12,sample_scans/sample_scan1.pdf,a,TRUE
+301245678,wxyz,sample_test,2,b,156.40,sample_scans/sample_scan1.pdf,b,TRUE
 ...
 ```
 
@@ -100,17 +103,17 @@ student_id,test_version,quiz,resp_no,ans,metric,file,key,correct
 ```
 ===== GRADING SUMMARY =====
 
-Students graded: 25
+Students graded: 2
 
 Score Distribution:
-  Mean:   82.5%
-  Median: 85.0%
-  Std Dev: 12.3%
-  Range:  45.0% - 100.0%
+  Mean:   95.0%
+  Median: 95.0%
+  Std Dev: 7.1%
+  Range:  90.0% - 100.0%
 
 Most Missed Questions:
-  Q7: 32.0% correct
-  Q12: 48.0% correct
+  Q5: 50.0% correct
+  Q1: 100.0% correct
   ...
 ```
 
